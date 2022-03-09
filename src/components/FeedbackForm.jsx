@@ -6,10 +6,9 @@ import FeedbackContext from '../context/FeedbackContext'
 
 function FeedbackForm() {
   const [text, setText] = useState('')
-  const [rating, setRating] = useState(10)
+  const [rating, setRating] = useState()
   const [btnDisabled, setBtnDisabled] = useState(true)
-  const height = { height: '10px' }
-  const [message, setMessage] = useState(<div style={height}></div>)
+  const [message, setMessage] = useState()
 
   const { addFeedback, feedbackEdit, updateFeedback } =
     useContext(FeedbackContext)
@@ -20,7 +19,7 @@ function FeedbackForm() {
       setText(feedbackEdit.item.text)
       setRating(feedbackEdit.item.rating)
     }
-  }, [feedbackEdit])
+  }, [feedbackEdit.edit === true])
 
   const handleTextChange = (e) => {
     if (text === '') {
@@ -40,15 +39,16 @@ function FeedbackForm() {
     e.preventDefault()
     if (text.trim().length > 10) {
       const newFeedback = {
-        text: text,
-        rating: rating, // can be written as rating
+        text,
+        rating,
       }
       if (feedbackEdit.edit === true) {
         updateFeedback(feedbackEdit.item.id, newFeedback)
+        feedbackEdit.edit = false
       } else {
         addFeedback(newFeedback)
       }
-
+      setBtnDisabled(true)
       setText('')
     }
   }
