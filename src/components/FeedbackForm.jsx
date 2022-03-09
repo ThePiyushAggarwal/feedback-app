@@ -19,7 +19,7 @@ function FeedbackForm() {
       setText(feedbackEdit.item.text)
       setRating(feedbackEdit.item.rating)
     }
-  }, [feedbackEdit.edit === true])
+  }, [feedbackEdit])
 
   const handleTextChange = (e) => {
     if (text === '') {
@@ -44,7 +44,6 @@ function FeedbackForm() {
       }
       if (feedbackEdit.edit === true) {
         updateFeedback(feedbackEdit.item.id, newFeedback)
-        feedbackEdit.edit = false
       } else {
         addFeedback(newFeedback)
       }
