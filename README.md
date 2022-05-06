@@ -1,12 +1,16 @@
 This is a project from a course by Brad Traversy
 
-But it is not fully functional because of JSON server is not configured properly in the build.
+Heroku Live Deployment: https://feedback-app-a.herokuapp.com/
 
-Though this project will work on your machine locally.
+MongoDB has been connected now.
+
+This project can work on your machine locally as well.
 
 ### How to run this app on your machine?
 
 Clone the repository.
+
+Requirement is a MongoDB URI. Save it as MONGODB_URI in your .env file.
 
 Run this in root folder of the repository as well as in frontend directory.
 
