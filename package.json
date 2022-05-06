@@ -4,6 +4,7 @@
   "description": "feedback app",
   "main": "index.js",
   "scripts": {
+    "start":"node backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run nodemonserver\" \"npm run client\"",
     "nodemonserver": "nodemon backend/server.js",
