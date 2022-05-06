@@ -16,10 +16,10 @@ app.use(express.json())
 app.use('/api/feedbacks', require('./routes/feedback'))
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, './build')))
+  app.use(express.static(path.join(__dirname, '../frontend/build')))
 
   app.use('*', (_, response) => {
-    response.sendFile(path.join(__dirname, './build/index.html'))
+    response.sendFile(path.join(__dirname, '../frontend/build/index.html'))
   })
 } else {
   app.get('/', (_, response) => {
