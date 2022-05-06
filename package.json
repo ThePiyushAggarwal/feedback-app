@@ -1,49 +1,29 @@
 {
   "name": "feedback-app",
-  "version": "0.1.0",
-  "private": true,
-  "proxy": "http://localhost:5000",
+  "version": "1.0.0",
+  "description": "feedback app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "nodemonserver": "nodemon backend/server.js",
+    "server": "node backend/server.js",
+    "client": "npm start --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThePiyushAggarwal/feedback-app.git"
+  },
+  "author": "Piyush Aggrwal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThePiyushAggarwal/feedback-app/issues"
+  },
+  "homepage": "https://github.com/ThePiyushAggarwal/feedback-app#readme",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.3",
-    "@testing-library/user-event": "^13.5.0",
-    "concurrently": "^7.0.0",
+    "concurrently": "^7.1.0",
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
-    "nodemon": "^2.0.16",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-icons": "^4.3.1",
-    "react-router-dom": "^6.2.2",
-    "react-scripts": "5.0.0",
-    "uuid": "^8.3.2",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "node backend/server.js",
-    "nodemonserver": "nodemon backend/server.js",
-    "dev": "concurrently \"npm run server\" \"npm start\""
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "nodemon": "^2.0.16"
   }
 }
