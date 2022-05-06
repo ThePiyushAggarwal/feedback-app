@@ -2,6 +2,8 @@ import { createContext, useState, useEffect } from 'react'
 
 const FeedbackContext = createContext()
 
+const BASE_URL = '/api/feedbacks'
+
 export const FeedbackProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [feedback, setFeedback] = useState([])
@@ -17,7 +19,7 @@ export const FeedbackProvider = ({ children }) => {
 
   // Fetch feedback
   const fetchFeedback = async () => {
-    const response = await fetch('/api/feedbacks')
+    const response = await fetch(BASE_URL)
     const data = await response.json()
     setFeedback(data)
     setIsLoading(false)
@@ -25,7 +27,7 @@ export const FeedbackProvider = ({ children }) => {
 
   // Add feedback
   const addFeedback = async (newFeedback) => {
-    const response = await fetch('/feedback', {
+    const response = await fetch(BASE_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -41,17 +43,17 @@ export const FeedbackProvider = ({ children }) => {
   // Delete feedback
   const deleteFeedback = async (id) => {
     if (window.confirm('Are you sure?')) {
-      await fetch(`/feedback/${id}`, {
+      await fetch(BASE_URL + '/' + id, {
         method: 'DELETE',
       })
 
-      setFeedback(feedback.filter((item) => item.id !== id))
+      setFeedback(feedback.filter((item) => item._id !== id))
     }
   }
 
   // Update feedback item
   const updateFeedback = async (id, updItem) => {
-    const response = await fetch(`/feedback/${id}`, {
+    const response = await fetch(BASE_URL + '/' + id, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -61,9 +63,7 @@ export const FeedbackProvider = ({ children }) => {
 
     const data = await response.json()
 
-    setFeedback(
-      feedback.map((item) => (item.id === id ? { ...item, ...data } : item))
-    )
+    setFeedback(feedback.map((item) => (item._id === id ? data : item)))
 
     setFeedbackEdit({
       item: {},

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run nodemonserver\" \"npm run client\"",
     "nodemonserver": "nodemon backend/server.js",
     "server": "node backend/server.js",
     "client": "npm start --prefix frontend"
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/ThePiyushAggarwal/feedback-app#readme",
   "dependencies": {
     "concurrently": "^7.1.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
     "nodemon": "^2.0.16"

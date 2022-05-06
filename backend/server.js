@@ -4,8 +4,11 @@ const app = express()
 const PORT = process.env.PORT || 5000
 const connectDB = require('./config/db')
 const path = require('path')
+const cors = require('cors')
 
 connectDB()
+
+app.use(cors())
 
 // Body parser
 app.use(express.json())
