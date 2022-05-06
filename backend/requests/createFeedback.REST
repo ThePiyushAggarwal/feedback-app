@@ -1,0 +1,7 @@
+POST http://localhost:5000/api/feedbacks
+Content-Type: application/json
+
+{
+  "rating":"10",
+  "text":"I give 10 rating because you are a piece of beauty"
+}
